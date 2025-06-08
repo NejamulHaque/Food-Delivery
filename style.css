@@ -1,0 +1,438 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* === NAVIGATION === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+.navbar .logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #22c55e;
+}
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.navbar .nav-links li a {
+  text-decoration: none;
+  color: #333;
+  transition: 0.3s;
+}
+.navbar .nav-links li a:hover {
+  color: #22c55e;
+}
+
+/* === HERO SECTION === */
+.hero {
+  height: 400px;
+  background-image: url('https://plus.unsplash.com/premium_photo-1700583712176-0652e672ba18?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Zm9vZCUyMG9yJTIwbWVhbHxlbnwwfDB8MHx8fDA%3D');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.hero .overlay {
+  background: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.hero input {
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  width: 90%;
+  max-width: 400px;
+  border: none;
+  border-radius: 6px;
+}
+
+/* === CATEGORIES === */
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  flex-wrap: wrap;
+}
+.categories button {
+  border: 1px solid #ddd;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.categories button.active {
+  background: #22c55e;
+  color: white;
+  border: none;
+}
+
+/* === MAIN CONTAINER === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.card-body {
+  padding: 1rem;
+}
+.card-body h3 {
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+}
+.card-body p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: #fff;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* === FORM PAGES (Login & Signup) === */
+body.form-page {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-section {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+.form-section h2 {
+  margin-bottom: 1.5rem;
+  color: #111827;
+  font-size: 1.8rem;
+}
+form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0 1rem 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border 0.3s;
+}
+form input:focus {
+  border-color: #22c55e;
+  outline: none;
+}
+form label {
+  display: block;
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+form button {
+  background-color: #22c55e;
+  color: #fff;
+  padding: 0.75rem;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+form button:hover {
+  background-color: #16a34a;
+}
+form p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+form a {
+  color: #22c55e;
+  text-decoration: none;
+}
+form a:hover {
+  text-decoration: underline;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;          /* space between items */
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;        /* default link color */
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+  background-color: #ff6f61;  /* accent color on hover */
+  color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: center;  /* center all nav items horizontally */
+  align-items: center;
+  gap: 40px;  /* spacing between logo and menu */
+  padding: 1rem 0;
+  background-color: #fff;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #ff6f61;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+  background-color: #ff6f61;
+  color: white;
+}
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #fafafa;
+}
+
+/* Navigation Bar */
+nav {
+  display: flex;
+  justify-content: center;  /* center logo + menu horizontally */
+  align-items: center;
+  gap: 50px;
+  padding: 1rem 0;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ff6f61;
+  cursor: default;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+  background-color: #ff6f61;
+  color: white;
+}
+
+/* Section: Our Services */
+.services-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.services-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #ff6f61;
+}
+
+/* Cards container */
+.menu-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Form Pages (Login & Signup) */
+body.form-page {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-section {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  width: 350px;
+  text-align: center;
+}
+
+.form-section h2 {
+  margin-bottom: 25px;
+  color: #ff6f61;
+  font-weight: 700;
+}
+
+.form-section form input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-section form input:focus {
+  border-color: #ff6f61;
+  outline: none;
+}
+
+.form-section form button {
+  width: 100%;
+  padding: 12px 15px;
+  margin-top: 20px;
+  background-color: #ff6f61;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-section form button:hover {
+  background-color: #e55b50;
+}
+
+.form-section p {
+  margin-top: 18px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.form-section p a {
+  color: #ff6f61;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form-section p a:hover {
+  text-decoration: underline;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f9f9f9; /* optional */
+}
+
+.form-section {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}

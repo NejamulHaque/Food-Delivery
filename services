@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Services - QuickEats</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">QuickEats</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="trackorder.html">Track Order</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="services-section">
+    <h2>Our Services</h2>
+    <div class="menu-cards">
+      <div class="card">
+        <img src="https://img.freepik.com/free-psd/3d-brown-parcel-box-shipping-online-delivery-concept-illustration-background_56104-2614.jpg?semt=ais_hybrid&w=400" alt="Fast Delivery">
+        <h3>Fast Delivery</h3>
+        <p>Get your order delivered within 30 minutes guaranteed!</p>
+      </div>
+      <div class="card">
+        <img src="fresh-food-3d.png" alt="Fresh Food">
+        <h3>Fresh Food</h3>
+        <p>We ensure your food is always fresh and healthy.</p>
+      </div>
+      <div class="card">
+        <img src="support-3d.png" alt="24/7 Support">
+        <h3>24/7 Support</h3>
+        <p>Have questions? Our team is here anytime you need.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 QuickEats. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
