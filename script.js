@@ -1,10 +1,9 @@
-// Add active class toggle for category buttons
+// === Category Filter Buttons ===
 const buttons = document.querySelectorAll('.categories button');
 const cards = document.querySelectorAll('.cards .card');
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
-    // Toggle active class
     buttons.forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
 
@@ -12,104 +11,107 @@ buttons.forEach(button => {
 
     cards.forEach(card => {
       const category = card.getAttribute('data-category');
-
-      if (filter === 'all' || filter === category) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
+      card.style.display = (filter === 'all' || filter === category) ? 'block' : 'none';
     });
   });
 });
 
-
-// Existing code...
-
-// Track order form logic
-document.getElementById('trackOrderForm')?.addEventListener('submit', function(e) {
-  e.preventDefault();
-  document.getElementById('orderStatus').innerText = 'Your order is on the way!';
-});
-
-// Login form
-document.getElementById('loginForm')?.addEventListener('submit', function(e) {
-  e.preventDefault();
-  alert('Logged in successfully! (Demo)');
-});
-
-// Signup form
-document.getElementById('signupForm')?.addEventListener('submit', function(e) {
-  e.preventDefault();
-  alert('Account created successfully! (Demo)');
-});
-const buttons = document.querySelectorAll('.categories button');
-const cards = document.querySelectorAll('.card');
-
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    // Toggle active class
-    buttons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-
-    const filter = button.getAttribute('data-filter');
-
-    cards.forEach(card => {
-      const category = card.getAttribute('data-category');
-
-      if (filter === 'all' || filter === category) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  });
-});
+// === DOM Ready Logic ===
 document.addEventListener('DOMContentLoaded', () => {
 
-  // TRACK ORDER FORM
+  // === LOGIN FORM ===
+  const loginForm = document.getElementById('loginForm');
+  if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = loginForm.email.value;
+      const password = loginForm.password.value;
+
+      try {
+       const res = await fetch('http://localhost:5001/api/auth/login', {
+   method: 'POST',
+   headers: { 'Content-Type': 'application/json' },
+   body: JSON.stringify({ email, password })
+   });
+
+   const msg = await res.text();
+    alert(msg);
+
+if (res.ok) {
+  window.location.href = 'dashboard.html';
+}
+
+
+      } catch (err) {
+        alert('Login failed. Check console.');
+        console.error(err);
+      }
+    });
+  }
+
+  // === SIGNUP FORM ===
+  const signupForm = document.getElementById('signupForm');
+  if (signupForm) {
+    signupForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const inputs = signupForm.querySelectorAll('input');
+      const name = inputs[0].value;
+      const email = inputs[1].value;
+      const password = inputs[2].value;
+
+      try {
+        const res = await fetch('http://localhost:5001/api/auth/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name, email, password })
+        });
+
+        const msg = await res.text();
+        alert(msg);
+        if (res.status === 201) signupForm.reset();
+      } catch (err) {
+        alert('Signup failed. Check console.');
+        console.error(err);
+      }
+    });
+  }
+
+  // === ORDER TRACKING ===
   const trackForm = document.getElementById('trackOrderForm');
   if (trackForm) {
-    trackForm.addEventListener('submit', (e) => {
+    trackForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const orderInput = trackForm.querySelector('input[type="text"]');
+      const orderInput = trackForm.querySelector('input[type=\"text\"]');
       const orderStatusDiv = document.getElementById('orderStatus');
-      
-      // Simple validation
+
       if (orderInput.value.trim() === '') {
         orderStatusDiv.textContent = 'Please enter your Order ID.';
         orderStatusDiv.style.color = 'red';
         return;
       }
-      
-      // Simulate success
-      orderStatusDiv.textContent = `Success: Order "${orderInput.value.trim()}" found!`;
-      orderStatusDiv.style.color = 'green';
 
-      // Optionally clear the input
-      // orderInput.value = '';
+      try {
+        const res = await fetch('http://localhost:5001/api/order/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ orderId: orderInput.value.trim() })
+        });
+
+        if (!res.ok) {
+          orderStatusDiv.textContent = 'Order not found.';
+          orderStatusDiv.style.color = 'red';
+        } else {
+          const data = await res.json();
+          orderStatusDiv.textContent = `Order Status: ${data.status}`;
+          orderStatusDiv.style.color = 'green';
+        }
+      } catch (err) {
+        orderStatusDiv.textContent = 'Error contacting server.';
+        orderStatusDiv.style.color = 'red';
+        console.error(err);
+      }
     });
   }
-
-  // LOGIN FORM
-  const loginForm = document.getElementById('loginForm');
-  if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      // Normally you'd validate user/pass or call API
-      alert('Login successful!');
-      loginForm.reset();
-    });
-  }
-
-  // SIGNUP FORM
-  const signupForm = document.getElementById('signupForm');
-  if (signupForm) {
-    signupForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      // Normally you'd validate data and call backend API
-      alert('Signup successful!');
-      signupForm.reset();
-    });
-  }
-
 });
